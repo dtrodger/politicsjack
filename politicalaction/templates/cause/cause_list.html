@@ -1,0 +1,25 @@
+{% extends 'cause/cause_base.html' %}
+
+{% block style %}
+<style>
+
+</style>
+{% endblock %}
+
+{% block content %}
+	<div class="body">
+		<section class="row">
+			<div class="col-xs-10 col-xs-offset-1 text-center">
+				<h1>Make you voice heard.</h1>
+				<hr>
+			</div>
+		</section>
+		<section class="row">
+			{% for cause in cause_list %}
+					<article class="col-sm-6 text-center" {% if forloop.counter|divisibleby:2 %} style="border-left: 1px solid;" {% endif %}>
+						<h2><a href="{% url 'cause_detail' slug=cause.slug %}">{{cause.title}}</a></h2>
+					</article>
+			{% endfor %}
+		</section>
+	</div>
+{% endblock %}

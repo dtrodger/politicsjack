@@ -1,0 +1,9 @@
+{% extends 'notification/notification_base.html' %}
+
+{% block content %}
+	{% for cause in cause_list %}
+		<ul>
+			<li>{{ cause.title }}</li>
+		</ul>
+	{% endfor %}
+{% endblock %}

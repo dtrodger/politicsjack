@@ -1,0 +1,7 @@
+{% extends 'notification/notification_base.html' %}
+
+{% block content %}
+<h1>{{ notification.title }}</h1>
+<h2>{{ notification.description }}</h2>
+<a class="btn btn-default" href="{% url 'notification_delete' slug=cause.slug %}">Delete Cause</a>
+{% endblock %}
