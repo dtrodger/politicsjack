@@ -1,0 +1,11 @@
+{% extends 'cause/cause_base.html' %}
+
+{% block content %}
+<main class="row">
+	<section class="col-xs-10 col-xs-offset-1 text-center">
+		<h1>{{ cause.title }}</h1>
+	</section>
+</main>
+<h2>{{ cause.description }}</h2>
+<a class="btn btn-default" href="{% url 'cause_delete' slug=cause.slug %}">Delete Cause</a>
+{% endblock %}
