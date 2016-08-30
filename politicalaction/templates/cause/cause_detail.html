@@ -1,11 +1,34 @@
 {% extends 'cause/cause_base.html' %}
 
 {% block content %}
-<main class="row">
-	<section class="col-xs-10 col-xs-offset-1 text-center">
+<section class="row">
+	<header class="col-xs-10 col-xs-offset-1 text-center">
 		<h1>{{ cause.title }}</h1>
-	</section>
-</main>
-<h2>{{ cause.description }}</h2>
-<a class="btn btn-default" href="{% url 'cause_delete' slug=cause.slug %}">Delete Cause</a>
+	</header>
+</section>
+
+<section class="row">
+	<header class="col-xs-10 col-xs-offset-1">
+		{% if cause.title == "Hillary Clinton for President" %}
+			<p>Hillary Clinton believes that we need an economy that works for everyone, not just those at the top. But when it comes to taxes, too often the wealthiest and the largest corporations are playing by a different set of rules than hardworking families.</p>
+
+			<p>Hillary is committed to restoring basic fairness in our tax code and ensuring that the wealthiest Americans and large corporations pay their fair share, while providing tax relief to working families. That’s not only fair, it’s good for economic growth, because she will use the proceeds to create good-paying jobs here in America—and make bold investments that leave our economy more competitive over the long run.</p>
+		{% else %}
+			{{ cause.description }}
+		{% endif %}
+	</header>
+</section>
+
+<section class="row">
+	<article class="col-xs-10 col-xs-offset-1">
+		<header>
+			<h2>Upcoming Events</h2>
+		</header>
+		{% for notification in notifications %}
+			<a href="#">{{ notification.title }}</a>
+			<br>
+		{% endfor %}
+	</article>
+</section>
+
 {% endblock %}

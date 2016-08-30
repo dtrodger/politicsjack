@@ -7,5 +7,5 @@ class CauseCreationForm(forms.ModelForm):
 		model = Cause
 		fields = [
 			'title',
-			'description'
+			'description',
 		]
