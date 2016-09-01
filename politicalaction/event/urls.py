@@ -6,7 +6,7 @@ urlpatterns = [
 
 	# url(r'create/$', CauseCreate.as_view(), name="cause_create"),
 
-	url(r'list/$', EventList.as_view(), name="event_list"),
+	url(r'^$', EventList.as_view(), name="event_list"),
 
 	# url(r'user_list/$', UserCauseList.as_view(), name="user_cause_list"),
 

@@ -1,12 +1,12 @@
 from django.conf.urls import url
 
-from .views import CauseCreate, CauseUpdate, CauseDetail, CauseList, UserCauseList, CauseDelete
+from .views import CauseUpdate, CauseDetail, CauseList, UserCauseList, CauseDelete
 
 urlpatterns = [
 
-	url(r'create/$', CauseCreate.as_view(), name="cause_create"),
+	# url(r'create/$', CauseCreate.as_view(), name="cause_create"),
 
-	url(r'list/$', CauseList.as_view(), name="cause_list"),
+	url(r'^$', CauseList.as_view(), name="cause_list"),
 
 	url(r'user_list/$', UserCauseList.as_view(), name="user_cause_list"),
 

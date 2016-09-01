@@ -9,13 +9,13 @@ from .forms import CauseCreationForm
 from notification.models import Notification
 
 
-class CauseCreate(LoginRequiredMixin, CreateView):
-	model = Cause
-	form_class = CauseCreationForm
-	template_name = "cause/cause_form.html"
+# class CauseCreate(LoginRequiredMixin, CreateView):
+# 	model = Cause
+# 	form_class = CauseCreationForm
+# 	template_name = "cause/cause_form.html"
 
-	def get_success_url(self, **kwargs):
-		return reverse_lazy('cause_detail', args=[self.object.slug])
+# 	def get_success_url(self, **kwargs):
+# 		return reverse_lazy('cause_detail', args=[self.object.slug])
 
 
 class CauseUpdate(UpdateView):

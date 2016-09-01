@@ -31,7 +31,7 @@ class Member(models.Model):
 	modified = models.DateTimeField()
 
 	def get_absolute_url(self):
-		return reverse('cause_detail', args=[self.slug])
+		return reverse('member_detail', args=[self.slug, self.pk])
 
 	def save(self, *args, **kwargs):
 		if not self.id:
@@ -40,11 +40,11 @@ class Member(models.Model):
 		return super(Member, self).save(*args, **kwargs)
 
 	def __unicode__(self):
-		return "%s" % self.username
+		return "%s" % self.first_name
 
 @receiver(pre_save, sender=Member)
 def create_cause_slug(sender, instance, **kwargs):
-	new_slug = slugify(instance.username)
+	new_slug = slugify(instance.first_name+instance.last_name)
 	if len(Member.objects.filter(slug=new_slug)) > 0:
 		new_slug = new_slug+str(instance.id)
 	instance.slug = new_slug

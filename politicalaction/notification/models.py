@@ -10,13 +10,13 @@ from datetime import datetime
 
 
 class Notification(models.Model):
-	slug = models.SlugField(default = 1)
-	image = models.ImageField(null = True)
-	title = models.CharField(max_length = 255)
-	description = models.CharField(max_length = 255)
-	expiration_date = models.DateTimeField()
-	created = models.DateTimeField(editable=False)
-	modified = models.DateTimeField()
+	slug = models.SlugField(blank=True)
+	image = models.ImageField(null = True, blank=True)
+	title = models.CharField(max_length = 255, blank=True)
+	description = models.CharField(max_length = 255, blank=True)
+	expiration_date = models.DateTimeField(blank=True)
+	created = models.DateTimeField(editable=False, blank=True)
+	modified = models.DateTimeField(blank=True)
 
 	def save(self, *args, **kwargs):
 		if not self.id:
