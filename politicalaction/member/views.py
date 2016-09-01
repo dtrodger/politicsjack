@@ -13,7 +13,7 @@ class MemberCreate(LoginRequiredMixin, CreateView):
 	template_name = "member/member_form.html"
 
 	def get_success_url(self, **kwargs):
-		return reverse_lazy('cause_detail', args=[self.object.slug])
+		return reverse_lazy('member_detail', args=[self.object.slug])
 
 
 class MemberUpdate(UpdateView):

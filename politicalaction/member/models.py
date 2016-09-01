@@ -18,12 +18,12 @@ PREFIX_CHOICES = (
 		)
 
 class Member(models.Model):
-	username = models.CharField(max_length=255)
+	slug = models.SlugField()
+	user = models.OneToOneField(User)
 	prefix = models.CharField(max_length=255, choices = PREFIX_CHOICES)
 	first_name = models.CharField(max_length=255)
 	last_name = models.CharField(max_length=255)
-	slug = models.SlugField()
-	bio = models.CharField(max_length=255)
+	bio = models.CharField(max_length=255, blank=True)
 	causes = models.ManyToManyField(Cause, related_name="cause_member", blank = True)
 	key_cause_member = models.ManyToManyField(Cause, related_name="cause_key_member", blank = True)
 	moderator = models.ManyToManyField(Cause, related_name="cause_moderator", blank = True)

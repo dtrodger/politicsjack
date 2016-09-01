@@ -4,12 +4,15 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 
+from allauth import urls as allauth_urls
 from cause import urls as cause_urls
 from event import urls as event_urls
 from politician import urls as politician_urls
 from notification import urls as notification_urls
 
 urlpatterns = [
+
+	url(r'^accounts/', include(allauth_urls)),
 
     url(r'^admin/', admin.site.urls),
 
