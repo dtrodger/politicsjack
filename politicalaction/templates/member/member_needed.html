@@ -1,0 +1,10 @@
+{% extends 'member/member_base.html' %}
+
+{% block content %}
+	<div class="row">
+		<h2>You tried to acces a section of the site that is reserved for members only. To sign up as a free member, click the button bellow</h2>
+		<div class="col-sm-2">
+			<a class="btn btn-block btn-default btn-lg" href="{% url 'account_signup' %}">Sign Up</a>
+		</div>
+	</div>
+{% endblock %}
