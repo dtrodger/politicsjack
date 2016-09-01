@@ -1,0 +1,32 @@
+{% extends 'event/event_base.html' %}
+
+{% block content %}
+
+<section class="row">
+	<header>
+		<h1>{{ politician.name }}</h1>
+	</header>
+</section>
+
+<section class="row">
+	<header>
+		<p>Ward: {{ politician.ward }}</p>
+		<p>Phone: {{ politician.phone }}</p>
+		<p>Fax: {{ politician.fax }}</p>
+		<p>Email: {{ politician.email }}</p>
+		<p><a href="{{ politician.website }}">Website</a></p>
+		<p>Office Address: {{ politician.office_address }}</p>
+		<p>Office City: {{ politician.office_city }}</p>
+		<p>Office Zip: {{ politician.office_zip }}</p>
+		<p>City Hall Phone: {{ politician.city_hall_phone }}</p>
+		<p>City Hall Address: {{ politician.city_hall_address }}</p>
+	</header>
+</section>
+
+<section class="row">
+	<div class="col-sm-3">
+	<a class="btn btn-lg btn-block btn-default" href="{% url 'politician_list' %}">Politician List</a>
+	</div>
+</section>
+
+{% endblock %}

@@ -37,7 +37,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="{% url 'cause_create' %}">Create Cause</a></li>
+            <li><a href="{% url 'event_list' %}">Events</a></li>
+            <li><a href="{% url 'politician_list' %}">Politicians</a></li>
             <li><a href="#contact">Contact</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -59,8 +60,10 @@
       </div>
     </nav>
     <div class="content">
+    <div class="col-xs-10 col-xs-offset-1">
 		{% block content %}
 		{% endblock %}
+    </div>
     </div>
 </body>
 </html>

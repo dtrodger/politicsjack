@@ -42,8 +42,11 @@ INSTALLED_APPS = [
 
     #Custom
     'cause',
+    'event',
+    'legislative_body',
     'member',
     'notification',
+    'politician',
 ]
 
 MIDDLEWARE = [

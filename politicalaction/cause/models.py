@@ -5,9 +5,12 @@ from django.db import models
 from django.db.models.signals import pre_save, post_save
 from django.dispatch import receiver
 from django.utils.text import slugify
+from django.urls import reverse
 from django.contrib.auth.models import User
 
 from datetime import datetime
+
+from politician.models import Politician
 
 FREQUNCY_CHOICES = (
 	("Daily","Daily"),
@@ -19,6 +22,7 @@ class Cause(models.Model):
 	slug = models.SlugField()
 	title = models.CharField(max_length=255)
 	description = models.CharField(max_length=255)
+	politicians = models.ManyToManyField(Politician, blank=True)
 	created = models.DateTimeField(editable=False)
 	modified = models.DateTimeField()
 	verified = models.BooleanField(default=False)

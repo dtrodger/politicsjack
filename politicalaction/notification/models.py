@@ -4,19 +4,16 @@ from django.db import models
 from django.db.models.signals import pre_save, post_save
 from django.dispatch import receiver
 from django.utils.text import slugify
+from django.urls import reverse
 
 from datetime import datetime
 
-from cause.models import Cause
-
 
 class Notification(models.Model):
-	cause = models.ManyToManyField(Cause)
 	slug = models.SlugField(default = 1)
 	image = models.ImageField(null = True)
 	title = models.CharField(max_length = 255)
 	description = models.CharField(max_length = 255)
-	location = models.CharField(max_length = 255, blank = True)
 	expiration_date = models.DateTimeField()
 	created = models.DateTimeField(editable=False)
 	modified = models.DateTimeField()
