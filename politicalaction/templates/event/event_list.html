@@ -1,0 +1,28 @@
+{% extends 'event/event_base.html' %}
+
+{% load staticfiles %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/cause_list.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class="body">
+		<section class="row title">
+			<div class="col-xs-10 col-xs-offset-1 text-center">
+				<h1>Event List</h1>
+			</div>
+		</section>
+		<section class="row">
+			{% for event in event_list %}
+					<article class="col-sm-6 text-center">
+						<h3><a href="{{ event.get_absolute_url }}">
+						<h3>{{ event.title }}</h3>
+						<p>{{ event.date }}</p>
+						<hr>
+						<br />
+					</article>
+			{% endfor %}
+		</section>
+	</div>
+{% endblock %}

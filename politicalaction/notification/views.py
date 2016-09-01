@@ -4,12 +4,12 @@ from django.views.generic import CreateView, UpdateView, ListView, DetailView, D
 from django.core.urlresolvers import reverse_lazy
 
 from .models import Notification
-from .forms import NotificationCreationForm
+# from .forms import NotificationCreationForm
 
 
 class NotificationCreate(LoginRequiredMixin, CreateView):
 	model = Notification
-	form_class = NotificationCreationForm
+	# form_class = NotificationCreationForm
 	template_name = "notification/notification_form.html"
 
 	def get_success_url(self, **kwargs):

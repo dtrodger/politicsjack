@@ -1,14 +1,16 @@
 from __future__ import unicode_literals
 
+from django_resized import ResizedImageField
 from django.db import models
 from django.db.models.signals import pre_save, post_save
 from django.dispatch import receiver
 from django.utils.text import slugify
+from django.urls import reverse
 from django.contrib.auth.models import User
 
 from datetime import datetime
 
-from member.models import Member
+from politician.models import Politician
 
 FREQUNCY_CHOICES = (
 	("Daily","Daily"),
@@ -18,12 +20,9 @@ FREQUNCY_CHOICES = (
 
 class Cause(models.Model):
 	slug = models.SlugField()
-	image = models.ImageField(null = True)
 	title = models.CharField(max_length=255)
-	members = models.ForeignKey(Member, related_name="cause_member", null = True)
-	key_members = models.ForeignKey(Member, related_name="cause_key_member", null = True)
-	moderators = models.ForeignKey(Member, related_name="cause_moderator", null = True)
 	description = models.CharField(max_length=255)
+	politicians = models.ManyToManyField(Politician, blank=True)
 	created = models.DateTimeField(editable=False)
 	modified = models.DateTimeField()
 	verified = models.BooleanField(default=False)

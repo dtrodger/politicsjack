@@ -4,9 +4,11 @@ from django.db import models
 from django.db.models.signals import pre_save, post_save
 from django.dispatch import receiver
 from django.utils.text import slugify
+from django.urls import reverse
 from django.contrib.auth.models import User
 
 from datetime import datetime
+from cause.models import Cause
 
 
 PREFIX_CHOICES = (
@@ -22,6 +24,9 @@ class Member(models.Model):
 	last_name = models.CharField(max_length=255)
 	slug = models.SlugField()
 	bio = models.CharField(max_length=255)
+	causes = models.ManyToManyField(Cause, related_name="cause_member", blank = True)
+	key_cause_member = models.ManyToManyField(Cause, related_name="cause_key_member", blank = True)
+	moderator = models.ManyToManyField(Cause, related_name="cause_moderator", blank = True)
 	created = models.DateTimeField(editable=False)
 	modified = models.DateTimeField()
 

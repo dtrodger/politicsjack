@@ -6,6 +6,8 @@ from django.core.urlresolvers import reverse_lazy
 from .models import Cause
 from .forms import CauseCreationForm
 
+from notification.models import Notification
+
 
 class CauseCreate(LoginRequiredMixin, CreateView):
 	model = Cause
@@ -27,6 +29,14 @@ class CauseUpdate(UpdateView):
 class CauseDetail(DetailView):
 	model = Cause
 	template_name = "cause/cause_detail.html"
+
+	def get_context_data(self, **kwargs):
+		context = super(CauseDetail, self).get_context_data(**kwargs)
+		print self.object
+		notifications = Notification.objects.filter(cause = self.object)
+		context['notifications'] = notifications
+
+		return context
 
 
 class CauseList(ListView):

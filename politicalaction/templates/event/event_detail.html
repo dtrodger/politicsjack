@@ -1,0 +1,31 @@
+{% extends 'event/event_base.html' %}
+
+{% block content %}
+<section class="row">
+	<header class="col-xs-10 col-xs-offset-1 text-center">
+		<h1>{{ cause.title }}</h1>
+	</header>
+</section>
+
+<section class="row">
+	<header>
+		<h1>{{ event.title }}</h1>
+	</header>
+	<main>
+		{% if request.user.is_staff %}
+		<h2>Added to Database: {{ event.created_on }}</h2>
+		<h2>Last Modified: {{ event.modified_on }}</h2>
+		{% endif %}
+		<h2>Date: {{ event.date }}</h2>
+		<h2>Time: {{ event.time }}</h2>
+		<h2>Location: {{ event.location }}</h2>
+	</main>
+</section>
+
+<section class="row">
+	<div class="col-sm-3">
+	<a class="btn btn-lg btn-block btn-default" href="{% url 'event_list' %}">Event List</a>
+	</div>
+</section>
+
+{% endblock %}
